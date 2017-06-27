@@ -9,7 +9,7 @@ Docker-volume-driver client api
 
 ## usage 
 
- ```
+ ```go
  package main
 
 import (
