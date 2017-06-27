@@ -5,7 +5,7 @@ Docker-volume-driver client ReSET_api
   
 ## get the package 
 
- ``` go get github.com/sripadaraj/ReSET_api  ```
+ ``` go get github.com/sripadaraj/ReST_api  ```
 
 ## usage 
 
@@ -14,11 +14,11 @@ Docker-volume-driver client ReSET_api
 
 import (
   "log"
-  docker-volume-driver_api "github.com/sripadaraj/ReSET_api"
+  docker-volume-driver_api "github.com/sripadaraj/ReST_api"
 )
 
 func main() {
-    client := docker-volume-driver_api.NewrpcClient("http://apiserver:7860", "user", "password")
+    client := docker-volume-driver_api.NewrpcClient("http://your api server :<port>", "user", "password")
     req := &docker-volume-driver_api.CreateVolumeRequest{
         Name:              "MyVolume",
         RootUserID:        "root",
