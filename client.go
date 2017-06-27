@@ -1,18 +1,19 @@
-// Package quobyte represents a golang API for the Quobyte Storage System
-package quobyte
+// package rpc represent the remote procedure call 
+//which import the package rpc and create a new api client for docker-volume-client 
+package rpc
 
 import "net/http"
 
-type QuobyteClient struct {
+type rpcClient struct {
 	client   *http.Client
 	url      string
 	username string
 	password string
 }
 
-// NewQuobyteClient creates a new Quobyte API client
-func NewQuobyteClient(url string, username string, password string) *QuobyteClient {
-	return &QuobyteClient{
+// NewrpcClient creates a new docker-volume-dirverv API client
+func NewrpcClient(url string, username string, password string) *rpcClient {
+	return &rpcClient{
 		client:   &http.Client{},
 		url:      url,
 		username: username,
@@ -20,18 +21,19 @@ func NewQuobyteClient(url string, username string, password string) *QuobyteClie
 	}
 }
 
-// CreateVolume creates a new Quobyte volume. Its root directory will be owned by given user and group
-func (client QuobyteClient) CreateVolume(request *CreateVolumeRequest) (string, error) {
+// CreateVolume creates a new volume. Its root directory will be owned by given user and group
+func (client rpcClient) CreateVolume(request *CreateVolumeRequest) (string, error) {
 	var response volumeUUID
 	if err := client.sendRequest("createVolume", request, &response); err != nil {
 		return "", err
 	}
 
 	return response.VolumeUUID, nil
+	//returns a uuid of the created volume 
 }
 
 // ResolveVolumeNameToUUID resolves a volume name to a UUID
-func (client *QuobyteClient) ResolveVolumeNameToUUID(volumeName, tenant string) (string, error) {
+func (client *rpcClient) ResolveVolumeNameToUUID(volumeName, tenant string) (string, error) {
 	request := &resolveVolumeNameRequest{
 		VolumeName:   volumeName,
 		TenantDomain: tenant,
@@ -44,8 +46,8 @@ func (client *QuobyteClient) ResolveVolumeNameToUUID(volumeName, tenant string) 
 	return response.VolumeUUID, nil
 }
 
-// DeleteVolume deletes a Quobyte volume
-func (client *QuobyteClient) DeleteVolume(UUID string) error {
+// DeleteVolume deletes a docker-volume-driver volume
+func (client *rpcClient) DeleteVolume(UUID string) error {
 	return client.sendRequest(
 		"deleteVolume",
 		&volumeUUID{
@@ -55,7 +57,7 @@ func (client *QuobyteClient) DeleteVolume(UUID string) error {
 }
 
 // DeleteVolumeByName deletes a volume by a given name
-func (client *QuobyteClient) DeleteVolumeByName(volumeName, tenant string) error {
+func (client *rpcClient) DeleteVolumeByName(volumeName, tenant string) error {
 	uuid, err := client.ResolveVolumeNameToUUID(volumeName, tenant)
 	if err != nil {
 		return err
@@ -65,7 +67,7 @@ func (client *QuobyteClient) DeleteVolumeByName(volumeName, tenant string) error
 }
 
 // GetClientList returns a list of all active clients
-func (client *QuobyteClient) GetClientList(tenant string) (GetClientListResponse, error) {
+func (client *rpcClient) GetClientList(tenant string) (GetClientListResponse, error) {
 	request := &getClientListRequest{
 		TenantDomain: tenant,
 	}
