@@ -1,11 +1,11 @@
 # api
-Docker-volume-driver client api 
+Docker-volume-driver client ReSET_api 
 
 > The api will -automatically creates/resolves and sends back the uuid  of the volume for ![docker-volume-driver](https://github.com/maheshreddy7797/docker-volume-driver) .
   
 ## get the package 
 
- ``` go get github.com/sripadaraj/api  ```
+ ``` go get github.com/sripadaraj/ReSET_api  ```
 
 ## usage 
 
@@ -14,7 +14,7 @@ Docker-volume-driver client api
 
 import (
   "log"
-  docker-volume-driver_api "github.com/sripadaraj/api"
+  docker-volume-driver_api "github.com/sripadaraj/ReSET_api"
 )
 
 func main() {
