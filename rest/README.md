@@ -3,6 +3,33 @@
 
 > The rest will create a new client/volume , stop/check with user response 
 
+### usage 
+
+```go
+package main
+
+import (
+  "log"
+  quobyte_api "github.com/quobyte/api"
+)
+
+func main() {
+    client := quobyte_api.NewQuobyteClient("http://apiserver:7860", "user", "password")
+    req := &quobyte_api.CreateVolumeRequest{
+        Name:              "MyVolume",
+        RootUserID:        "root",
+        RootGroupID:       "root",
+        ConfigurationName: "base",
+    }
+
+    volume_uuid, err := client.CreateVolume(req)
+    if err != nil {
+        log.Fatalf("Error:", err)
+    }
+
+    log.Printf("%s", volume_uuid)
+}
+``` 
 ### client.go
 
 - Newclient () --> creates a new client 
