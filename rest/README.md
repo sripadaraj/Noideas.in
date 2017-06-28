@@ -4,7 +4,8 @@
 > The rest will create a new client/volume , stop/check with user response 
 
 ### usage 
-1. using method one view source code ![HERE](https://github.com/sripadaraj/ReST_api/blob/master/client.go)
+ 
+ ## 1. using method one view source code ![HERE](https://github.com/sripadaraj/ReST_api/blob/master/client.go)
  ```go
  package main
 
@@ -63,3 +64,4 @@ func main() {
     ```
     
     ``` code will be updated soon ```
+
