@@ -3,10 +3,12 @@
 
 > The rest will create a new client/volume , stop/check with user response 
 
+
 ### usage 
  
  ## 1. using method one view source code ![HERE](https://github.com/sripadaraj/ReST_api/blob/master/client.go)
- ```go
+> use the below package and create a new api client using the https portal
+```go
  package main
 
 import (
@@ -15,7 +17,7 @@ import (
 )
 
 func main() {
-    client := docker-volume-driver_api.NewrpcClient("http://apiserver:7860", "user", "password")
+    client := docker-volume-driver_api.NewrpcClient("http://yourapiserver:<port>", "user", "password")
     req := &docker-volume-driver_api.CreateVolumeRequest{
         Name:              "MyVolume",
         RootUserID:        "root",
