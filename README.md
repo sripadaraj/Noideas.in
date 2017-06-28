@@ -10,28 +10,12 @@ Docker-volume-driver client ReST_api
  ``` go get github.com/sripadaraj/ReST_api  ```
 
 ## usage 
+ for usage look at ![HERE](https://github.com/sripadaraj/ReST_api/blob/master/rest/README.md)
+ 
+ ### Working 
 
- ```go
- package main
+- adding credentials and authentications to call a request for the server with a HTTPS protocol
 
-import (
-  "log"
-  docker-volume-driver_api "github.com/sripadaraj/ReST_api"
-)
-
-func main() {
-    client := docker-volume-driver_api.NewrpcClient("http://your api server :<port>", "user", "password")
-    req := &docker-volume-driver_api.CreateVolumeRequest{
-        Name:              "MyVolume",
-        RootUserID:        "root",
-        RootGroupID:       "root",
-        ConfigurationName: "base",
-    }
-    volume_uuid, err := client.CreateVolume(req)
-    if err != nil {
-        log.Fatalf("Error:", err)
-    }
-
-    log.Printf("%s", volume_uuid)
-}
- ``` 
+```
+ Oauth tecq
+ ```
