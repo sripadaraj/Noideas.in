@@ -5,23 +5,22 @@
 
 ### usage 
 
-```go
-package main
+ ```go
+ package main
 
 import (
   "log"
-  quobyte_api "github.com/quobyte/api"
+  docker-volume-driver_api "github.com/sripadaraj/ReSET_api"
 )
 
 func main() {
-    client := quobyte_api.NewQuobyteClient("http://apiserver:7860", "user", "password")
-    req := &quobyte_api.CreateVolumeRequest{
+    client := docker-volume-driver_api.NewrpcClient("http://apiserver:7860", "user", "password")
+    req := &docker-volume-driver_api.CreateVolumeRequest{
         Name:              "MyVolume",
         RootUserID:        "root",
         RootGroupID:       "root",
         ConfigurationName: "base",
     }
-
     volume_uuid, err := client.CreateVolume(req)
     if err != nil {
         log.Fatalf("Error:", err)
@@ -29,7 +28,7 @@ func main() {
 
     log.Printf("%s", volume_uuid)
 }
-``` 
+ ``` 
 ### client.go
 
 - Newclient () --> creates a new client 
